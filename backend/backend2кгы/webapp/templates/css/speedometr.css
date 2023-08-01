@@ -1,0 +1,154 @@
+body {
+	--speed-counted-color: #b5fcf8;
+	--speed-unused-gradient: #1c1c1c;
+	--speed-central-circle-color: #1e1e1e;
+	--speed-gradient-color-1: #fd3902;
+	--speed-gradient-color-2: #eb7509;
+	--speed-gradient-color-3: #f6c906;
+	--speed-gradient-color-4: #c3ff0c;
+	--speed-gradient-color-6: #7bfe02;
+	--speed-gradient-color-7: #34fe04;
+}
+
+.light-theme {
+	--speed-counted-color: #000000;
+	--speed-unused-gradient: #b5fcf8;
+		--speed-central-circle-color: #b5fcf8;
+	--speed-gradient-color-1: #a751d4;
+	--speed-gradient-color-2: #c56384;
+	--speed-gradient-color-3: #e1743d;
+	--speed-gradient-color-4: #f76805;
+	--speed-gradient-color-6: #f34104;
+	--speed-gradient-color-7: #f91c03;
+}
+
+.speedometer_container {
+	width: max-content;
+	margin: auto;
+	padding-top: 5rem;
+}
+
+.speedometer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 250px;
+	height: 250px;
+	border-radius: 9999px;
+	background: conic-gradient(from 180deg, var(--speed-unused-gradient) 30deg, var(--speed-gradient-color-1) 30deg, var(--speed-gradient-color-2) 90deg, var(--speed-unused-gradient) 90deg 91deg, var(--speed-gradient-color-2) 91deg, var(--speed-gradient-color-3) 150deg, var(--speed-unused-gradient) 150deg 151deg, var(--speed-gradient-color-3) 151deg, var(--speed-gradient-color-4) 210deg, var(--speed-unused-gradient) 210deg 211deg, var(--speed-gradient-color-4) 211deg, var(--speed-gradient-color-6) 270deg, var(--speed-unused-gradient) 270deg 271deg, var(--speed-gradient-color-6) 271deg, var(--speed-gradient-color-7) 330deg, var(--speed-unused-gradient) 330deg);
+}
+
+.speedometer__core {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 200px;
+	height: 200px;
+	border-radius: 9999px;
+	background: var(--speed-central-circle-color);
+	box-shadow: 0 5px 10px 0 var(--speed-central-circle-color);
+}
+
+.speedometer__circle {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 162.5px;
+	height: 162.5px;
+	border-radius: 9999px;
+	background: #ea8216;
+	transition: background-color 1s, color 1s;
+	margin-top: 10%;
+	margin-left: 10%;
+}
+
+.speedometer__text {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 156.25px;
+	height: 156.25px;
+	border-radius: 9999px;
+	color: #f38106;
+	background: var(--speed-central-circle-color);
+	font-family: sans-serif;
+	font-size: 90px;
+	transition: all 1s;
+}
+
+.speedometer__indicator {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 100%;
+	height: 100%;
+	transform: translate(-50%, -50%) rotate(-60deg);
+	transition: transform 1s cubic-bezier(0.5, 0, 0.25, 1);
+}
+
+.speedometer__indicator-bg {
+	position: absolute;
+	left: -30px;
+	top: 50%;
+	width: 40px;
+	height: 40px;
+	transform: translateY(-50%);
+	border-radius: 9999px;
+	background: var(--speed-central-circle-color);
+	transition: background-color 1s, color 1s;
+}
+
+.speedometer__indicator-fg {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 17px;
+	height: 17px;
+	transform: translate(-50%, -50%);
+	border-radius: 9999px;
+	background: #f38106;
+	transition: background-color 1s, color 1s;
+}
+
+.number-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.speedometer__number {
+  position: absolute;
+  font-size: 30px;
+  color: var(--speed-counted-color);
+  text-shadow: 0 0 1px var(--speed-counted-color), 0 0 0px var(--speed-counted-color), 0 0 20px var(--speed-counted-color);
+  transform-origin: center;
+  white-space: nowrap;
+}
+
+.speedometer__number[data-value="20"] {
+  left: -25%;
+  top: 49%;
+  transform: translate(-50%, -50%);
+}
+
+.speedometer__number[data-value="40"] {
+  left: 14%;
+  top: -17%;
+  transform: translate(-50%, -50%);
+}
+
+.speedometer__number[data-value="60"] {
+  left: 87%;
+  top: -17%;
+  transform: translate(-50%, -50%);
+}
+
+.speedometer__number[data-value="80"] {
+  left: 125%;
+  top: 49%;
+  transform: translate(-50%, -50%);
+}
+
+
+

@@ -1,0 +1,49 @@
+{% load static %}
+
+{% if cp.is_available == False %}
+<div class="row cp-row align-items-center disabled" data-abbr="{{ cp }}" style="flex-wrap: nowrap">
+    {% else %}
+    <div class="row cp-row align-items-center" data-abbr="{{ cp }}" style="flex-wrap: nowrap">
+        {% endif %}
+        <div class="col" style="padding-right: 0;">
+            <div class="cp-row-item align-items-center d-flex">
+<!--                <div class="col-auto d-flex">-->
+<!--                    <img src="/static/images/{{cp.first}}-flag.svg" class="cp-flag"/>-->
+<!--                    <img src="/static/images/{{cp.last}}-flag.svg" class="cp-flag"/>-->
+<!--                </div>-->
+                <div class="col" style="margin-left: 7px">
+                    <a href="javascript:void(0)"
+                       data-abbr="{{ cp }}"
+                       data-first="{{cp.first}}"
+                       data-last="{{cp.last}}"
+                       data-firstname="{{cp.first.name}}"
+                       data-lastname="{{cp.last.name}}"
+                       data-active="0"
+                       class="btn-cp"
+                    >
+
+                        <span class="cp-first">{{ cp.first }}</span>
+                        <span class="cp-delim">/</span>
+                        <span class="cp-last">{{ cp.last }}</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex space-between timeframes"
+             {% comment %} style="overflow-x: scroll; overflow-y:hidden; position:relative; height: 3rem;" {% endcomment
+             %}
+        >
+            <div class="row"
+                 {% comment %} style="position: absolute; width: max-content;" {% endcomment %}
+            >
+                {% for tf in timeframes %}
+                <div class="col-auto tf-col"
+                     style="font-weight: lighter;">
+                    <a href="javascript:void(0)" data-abbr="{{ tf.abbr }}" data-active="0" class="tf btn btn-tf">
+                        {{tf.name}}</a>
+                    <br/>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+

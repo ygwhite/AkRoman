@@ -1,0 +1,418 @@
+  
+  .fear-index {
+    background-color: var(--haiti);
+    border: 1px none;
+    height: 926px;
+    mix-blend-mode: normal;
+    overflow: hidden;
+    overflow-x: hidden;
+    position: relative;
+    width: 428px;
+  }
+  
+  .fear-index .view-FAgnjn {
+    height: 410px;
+    left: 9px;
+    top: 20px;
+    width: 422px;
+  }
+  
+  .fear-index .ellipse-28-sxCrbX {
+    background-color: var(--haiti);
+    border-radius: 205.25px;
+    box-shadow: inset 0px 20px 36px #00000080 , 0px 4px 2px 1px #00adee33 , 0px 33px 22px #00000026 , 0px -12px 26px #9747ff1a , 0px 4px 4px #00000040;
+    height: 410px;
+    left: 0px;
+    mix-blend-mode: normal;
+    position: absolute;
+    top: 0px;
+    width: 410px;
+  }
+  
+  .fear-index .ellipse-8-sxCrbX {
+    background-color: transparent;
+    height: 301px;
+    left: 40px;
+    mix-blend-mode: normal;
+    position: absolute;
+    top: 41px;
+    width: 330px;
+  }
+  
+  .fear-index .x0-sxCrbX {
+    background-color: transparent;
+    height: 47px;
+    left: 100px;
+    letter-spacing: 0.00px;
+    line-height: normal;
+    mix-blend-mode: normal;
+    position: absolute;
+    text-align: center;
+    text-shadow: 0px 1px 9px #146863;
+    top: 328px;
+    width: 39px;
+  }
+  
+  .fear-index .x20-sxCrbX {
+    height: 47px;
+    left: 13px;
+    text-align: right;
+    text-shadow: 0px 1px 9px #146863;
+    top: 179px;
+    width: 39px;
+  }
+  
+  .fear-index .x40-sxCrbX {
+    background-color: transparent;
+    height: 47px;
+    left: 88px;
+    letter-spacing: 0.00px;
+    line-height: normal;
+    mix-blend-mode: normal;
+    position: absolute;
+    text-align: right;
+    text-shadow: 0px 1px 9px #146863;
+    top: 41px;
+    width: 39px;
+  }
+  
+  .fear-index .x100-sxCrbX {
+    background-color: transparent;
+    height: 47px;
+    left: 287px;
+    letter-spacing: 0.00px;
+    line-height: normal;
+    mix-blend-mode: normal;
+    position: absolute;
+    text-align: left;
+    text-shadow: 0px 1px 9px #146863;
+    top: 328px;
+    width: 46px;
+  }
+  
+  .fear-index .x80-sxCrbX {
+    background-color: transparent;
+    height: 47px;
+    left: 358px;
+    letter-spacing: 0.00px;
+    line-height: normal;
+    mix-blend-mode: normal;
+    position: absolute;
+    text-align: left;
+    text-shadow: 0px 1px 9px #146863;
+    top: 179px;
+    width: 38px;
+  }
+  
+  .fear-index .x60-sxCrbX {
+    background-color: transparent;
+    height: 47px;
+    left: 288px;
+    letter-spacing: 0.00px;
+    line-height: normal;
+    mix-blend-mode: normal;
+    position: absolute;
+    text-align: left;
+    text-shadow: 0px 1px 9px #146863;
+    top: 41px;
+    width: 38px;
+  }
+  
+  .fear-index .view-sxCrbX {
+    height: 279px;
+    left: 65px;
+    top: 68px;
+    transform: rotate(180deg);
+    width: 279px;
+  }
+  
+  .fear-index .icon-signal-NtV1vK {
+    background-color: transparent;
+    height: 113px;
+    left: -2px;
+    position: absolute;
+    top: 141px;
+    transform: rotate(-180deg);
+    width: 76px;
+  }
+  
+  .fear-index .ellipse-18-NtV1vK {
+    background-color: transparent;
+    height: 123px;
+    left: 197px;
+    position: absolute;
+    top: 138px;
+    transform: rotate(-180deg);
+    width: 85px;
+  }
+  
+  .fear-index .ellipse-20-NtV1vK {
+    background-color: transparent;
+    height: 54px;
+    left: 55px;
+    position: absolute;
+    top: 227px;
+    transform: rotate(-180deg);
+    width: 161px;
+  }
+  
+  .fear-index .ellipse-17-NtV1vK {
+    background-color: transparent;
+    height: 115px;
+    left: 202px;
+    position: absolute;
+    top: 23px;
+    transform: rotate(-180deg);
+    width: 79px;
+  }
+  
+  .fear-index .icon-call-NtV1vK {
+    background-color: transparent;
+    height: 119px;
+    left: -2px;
+    position: absolute;
+    top: 25px;
+    transform: rotate(-180deg);
+    width: 77px;
+  }
+  
+  .fear-index .view-J5opDo {
+    height: 280px;
+    left: 65px;
+    top: 68px;
+    width: 280px;
+  }
+  
+  .fear-index .group-12-c2uujl {
+    background-color: transparent;
+    height: 280px;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 280px;
+  }
+  
+  .fear-index .union-HkVAyJ {
+    background-color: transparent;
+    height: 227px;
+    left: 14px;
+    mix-blend-mode: normal;
+    position: absolute;
+    top: 28px;
+    width: 239px;
+  }
+  
+  .fear-index .ellipse-20-HkVAyJ {
+    background-color: #7aafb4;
+    border-radius: 11px/10.5px;
+    height: 21px;
+    left: 26px;
+    mix-blend-mode: normal;
+    position: absolute;
+    top: 127px;
+    width: 22px;
+  }
+  
+  .fear-index .ellipse-21-HkVAyJ {
+    background-color: transparent;
+    height: 189px;
+    left: 48px;
+    mix-blend-mode: normal;
+    position: absolute;
+    top: 45px;
+    width: 186px;
+  }
+  
+  .fear-index .x20-c2uujl {
+    color: #7aafb4;
+    font-family: var(--font-family-coolvetica-condensedregular);
+    font-size: 128px;
+    font-style: normal;
+    font-weight: 400;
+    height: 92px;
+    left: 62px;
+    text-align: center;
+    top: 92px;
+    white-space: nowrap;
+    width: 156px;
+  }
+  
+  .fear-index .title-FAgnjn {
+    background-color: transparent;
+    height: 79px;
+    left: 0px;
+    letter-spacing: 0.00px;
+    line-height: normal;
+    mix-blend-mode: normal;
+    position: absolute;
+    text-align: center;
+    top: 162px;
+    width: 428px;
+  }
+  
+  .fear-index .frame-1-FAgnjn {
+    align-items: center;
+    background-color: var(--rose-pearl);
+    border-radius: 30px 3px 3px 30px;
+    box-shadow: 0px 25px 22px #00000040;
+    cursor: pointer;
+    display: flex;
+    gap: 12px;
+    height: auto;
+    left: 38px;
+    mix-blend-mode: normal;
+    overflow: hidden;
+    padding: 6.6705780029296875px 12px;
+    position: absolute;
+    top: 104px;
+    width: 173px;
+  }
+  
+  .fear-index .top-winnerslosers-ejTWAy {
+    background-color: transparent;
+    letter-spacing: 0.00px;
+    line-height: normal;
+    margin-top: -1.00px;
+    mix-blend-mode: normal;
+    position: relative;
+    text-align: left;
+    width: fit-content;
+  }
+  
+  .fear-index .frame-2-FAgnjn {
+    align-items: center;
+    background-color: var(--rose-pearl);
+    border-radius: 3px 30px 30px 3px;
+    box-shadow: 0px 25px 22px #00000040;
+    cursor: pointer;
+    display: flex;
+    gap: 12px;
+    height: auto;
+    justify-content: flex-end;
+    left: 217px;
+    mix-blend-mode: normal;
+    overflow: hidden;
+    padding: 6.6705780029296875px 12px;
+    position: absolute;
+    top: 104px;
+    width: 173px;
+  }
+  
+  .fear-index .coin-selection-gMoIvN {
+    background-color: transparent;
+    letter-spacing: 0.00px;
+    line-height: normal;
+    margin-top: -1.00px;
+    mix-blend-mode: normal;
+    position: relative;
+    text-align: right;
+    width: fit-content;
+  }
+  
+  .fear-index .group-33-gMoIvN {
+    transform: rotate(180.00deg);
+  }
+  
+  .fear-index .polygon-3-yK7kM3 {
+    transform: rotate(-180.00deg);
+  }
+  
+  .fear-index .vector-11-FAgnjn {
+    background-color: transparent;
+    height: 2px;
+    left: 227px;
+    position: absolute;
+    top: 52px;
+    width: 161px;
+  }
+  
+  .fear-index .ak-roman-logo-FAgnjn {
+    background-color: transparent;
+    height: 38px;
+    left: 36px;
+    position: absolute;
+    top: 30px;
+    width: 184px;
+  }
+  
+  .fear-index .group-23-Ei2uMR {
+    background-color: transparent;
+    height: 12px;
+    left: 52px;
+    position: absolute;
+    top: 16px;
+    width: 73px;
+  }
+  
+  .fear-index .invest-Ei2uMR {
+    background-color: transparent;
+    height: auto;
+    left: 132px;
+    letter-spacing: 0.00px;
+    line-height: normal;
+    mix-blend-mode: normal;
+    position: absolute;
+    text-align: left;
+    top: 12px;
+    width: auto;
+  }
+  
+  .fear-index .x1-Ei2uMR {
+    background-color: transparent;
+    height: 38px;
+    left: 0px;
+    mix-blend-mode: normal;
+    position: absolute;
+    top: -0px;
+    width: 38px;
+  }
+  
+  .fear-index .polygon-3 {
+    background-color: transparent;
+    height: 12px;
+    left: 11px;
+    position: absolute;
+    top: 9px;
+    width: 8px;
+  }
+  
+  .fear-index .x20 {
+    background-color: transparent;
+    letter-spacing: 0.00px;
+    line-height: normal;
+    mix-blend-mode: normal;
+    position: absolute;
+  }
+
+   /* ГРУППИРОВАНИЕ */
+  
+   .ellipse-29 {
+    background-color: var(--haiti);
+    border-radius: 15.29px;
+    height: 31px;
+    left: 0px;
+    mix-blend-mode: normal;
+    position: absolute;
+    top: 0px;
+    width: 31px;
+  }
+  
+  .group-33 {
+    background-color: transparent;
+    height: 30.573484420776367px;
+    min-width: 30.573484420776367px;
+    position: relative;
+  }
+  
+  .view {
+    background-color: transparent;
+    position: absolute;
+  }
+  .coolvetica-condensedregular-normal-charlotte-30px {
+    color: var(--charlotte);
+    font-family: var(--font-family-coolvetica-condensedregular);
+    font-size: var(--font-size-l);
+    font-style: normal;
+    font-weight: 400;
+  }
+

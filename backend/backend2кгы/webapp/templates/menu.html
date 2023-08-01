@@ -1,0 +1,252 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+{% include "css/acrobat-font.css" %}
+{% include 'css/app.css' %}
+{% include 'css/speedometr.css' %}
+{% endblock style %}
+
+{% block content %}
+
+{% if initial_cp is None or sleep_page%}
+{% include 'sleep.html' %}
+{% else %}
+
+<div id="menu-frame" class="container m-0 p-0" style="position: absolute; width: 100%;">
+
+
+    <div class="cp-list">
+	<div class="row header">
+        <div class="col">
+            <div class="wrapper">
+                <div class="box2">
+                    <img class="theme-toggle-icon" src="/static/images/theme_toggle_dark.svg" style="margin-top: 7rem; margin-left: 2rem">
+                </div>
+                <div class="box1">
+                    <h1 class="header-title">Coin<br>selection</h1>
+                    <img class="box1_img" src="/static/images/logo.svg">
+                </div>
+                <div class="button-container">
+                    <button class="my-button">Fear & Greed<br>Index</button>
+                </div>
+            </div>
+        </div>
+    </div>
+         <div class="row row-cols-1 p-1">
+        {% for cp in available_luquidity %}
+        <div class="col separator">
+            {% include "frames/elements/menu-cp-row-lqvd.html" with cp=cp %}
+        </div>
+        {% endfor %}
+
+        {% for cp in currency_pairs %}
+        <div class="col separator">
+            {% include "frames/elements/menu-cp-row.html" with cp=cp %}
+        </div>
+        {% endfor %}
+                    {% for cp in not_avalable_currencies %}
+            <div class="col separator">
+                 {% include "frames/elements/menu-cp-row.html" with cp=cp %}
+            </div>
+            {% endfor %}
+
+    </div>
+
+    </div>
+    <div class="btn-main d-none">Подтвердить</div>
+</div>
+
+<div id="fear-greed-frame" class="container m-0 p-0" style="display:none; position: absolute; width: 100%;">
+    <div class="row">
+        <div class="col">
+            <div class="wrapper">
+                <div class="box2">
+                    <img class="theme-toggle-icon" src="/static/images/theme_toggle_dark.svg" style="margin-top: 7rem; margin-left: 2rem">
+                </div>
+                <div class="box1">
+                    <h1 class="header-title">Fear & Greed<br>Index</h1>
+                    <img class="box1_img" src="/static/images/logo.svg">
+                </div>
+                <div class="button-container">
+                    <button class="my-button back-to-menu">Coin<br>selection</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="speedometer_container">
+        <div class="speedometer">
+          <div class="speedometer__core">
+              <div class="number-container">
+            <div class="speedometer__circle">
+              <div class="speedometer__indicator">
+                <div class="speedometer__indicator-bg">
+                  <div class="speedometer__indicator-fg"></div>
+                </div>
+              </div>
+              <div class="speedometer__text">
+                <span>0</span>
+              </div>
+            </div>
+            <div class="speedometer__number" data-value="20">20</div>
+              <div class="speedometer__number" data-value="40">40</div>
+              <div class="speedometer__number" data-value="60">60</div>
+              <div class="speedometer__number" data-value="80">80</div>
+          </div>
+          </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+ $(document).ready(function() {
+      const body = $('body');
+
+      $('.theme-toggle-icon').click(function() {
+        body.toggleClass('light-theme');
+        updateBackgroundColor();
+      });
+
+      function updateBackgroundColor() {
+        if (body.hasClass('light-theme')) {
+          body.css('background-color', '#b5fcf8');
+        } else {
+          body.css('background-color', '#000000');
+        }
+      }
+    });
+
+</script>
+{% endif %}
+
+{% endblock content %}
+
+{% block script %}
+window.addEventListener("load", function(event) {
+{% if initial_cp is None %}
+{% include 'js/default-telegram.js' %}
+{% else %}
+const hello = new URLSearchParams(window.location.search).get("hello");
+const state = {};
+{% include "js/websocket.js" %}
+{% include "js/menu-signals.js" %}
+{% include "js/default-telegram.js" %}
+
+function toggleTheme() {
+      const body = document.body;
+      const themeToggleIcons = document.querySelectorAll('.theme-toggle-icon');
+
+      body.classList.toggle('light-theme');
+
+      themeToggleIcons.forEach(themeToggleIcon => {
+        if (body.classList.contains('light-theme')) {
+          themeToggleIcon.src = '/static/images/theme_toggle_light.svg';
+        } else {
+          themeToggleIcon.src = '/static/images/theme_toggle_dark.svg';
+        }
+      });
+    }
+
+    const themeToggleIcons = document.querySelectorAll('.theme-toggle-icon');
+    themeToggleIcons.forEach(themeToggleIcon => {
+      themeToggleIcon.addEventListener('click', toggleTheme);
+    });
+
+
+<!---->
+
+
+
+// Функция для анимации смены фреймов
+function switchFrames(hideFrame, showFrame) {
+    const transitionDuration = 500;
+
+    hideFrame.style.transition = `transform ${transitionDuration}ms ease-in-out`;
+    hideFrame.style.transform = 'translateX(-100%)';
+
+    showFrame.style.display = 'block';
+    showFrame.style.transition = `transform ${transitionDuration}ms ease-in-out`;
+    showFrame.style.transform = 'translateX(100%)';
+
+    setTimeout(() => {
+        showFrame.style.transform = 'translateX(0)';
+    }, 10);
+
+    setTimeout(() => {
+        hideFrame.style.display = 'none';
+        hideFrame.style.transform = 'translateX(0)';
+    }, transitionDuration);
+}
+
+// Обработчик события клика на кнопку Fear & Greed Index
+document.querySelector(".my-button").addEventListener("click", function() {
+    const menuFrame = document.getElementById("menu-frame");
+    const fearGreedFrame = document.getElementById("fear-greed-frame");
+    switchFrames(menuFrame, fearGreedFrame);
+});
+
+// Обработчик события клика на кнопку "Кнопка" (возврат к первому фрейму)
+document.querySelector(".back-to-menu").addEventListener("click", function() {
+    const menuFrame = document.getElementById("menu-frame");
+    const fearGreedFrame = document.getElementById("fear-greed-frame");
+    switchFrames(fearGreedFrame, menuFrame);
+});
+
+function updateSpeedometer(value) {
+  const indicator = document.querySelector(".speedometer__indicator");
+  const span = document.querySelector(".speedometer__text");
+  const maxAngle = 300;  // Максимальный угол поворота
+  const maxScore = 100;  // Максимальное значение в span
+  const angle = (value / maxScore) * maxAngle;
+  indicator.style.transform = `translate(-50%, -50%) rotate(${angle - 60}deg)`;
+  span.textContent = value;
+
+  const color = getColorByValue(value);
+  const innerCircle = document.querySelector('.speedometer__indicator-fg');
+  const innerCircle2 = document.querySelector('.speedometer__circle');
+  innerCircle.style.backgroundColor = color;
+  innerCircle2.style.background = color;
+  span.style.color = color;
+}
+
+function getColorByValue(value) {
+    let colorRanges = [];
+    if (document.body.classList.contains('light-theme')) {
+  colorRanges = [
+    { from: 0, to: 20, color: '#a751d4' },
+    { from: 20, to: 40, color: '#c56384' },
+    { from: 40, to: 60, color: '#e1743d' },
+    { from: 60, to: 80, color: '#f76805' },
+    { from: 80, to: 100, color: '#f34104' }
+  ];
+} else {
+  colorRanges = [
+    { from: 0, to: 20, color: '#fd3902' },
+    { from: 20, to: 40, color: '#eb7509' },
+    { from: 40, to: 60, color: '#f6c906' },
+    { from: 60, to: 80, color: '#c3ff0c' },
+    { from: 80, to: 100, color: '#7bfe02' }
+  ];
+}
+
+  for (const range of colorRanges) {
+    if (value >= range.from && value < range.to) {
+      return range.color;
+    }
+  }
+
+  return '#34fe04';
+}
+
+const initialValue = parseInt(document.querySelector(".speedometer__text span").textContent, 10);
+updateSpeedometer(initialValue);
+
+function updateValue() {
+  updateSpeedometer(Math.floor({{fear_greed_index}} ) + 0);
+}
+
+setInterval(updateValue, 1500);
+
+{% endif %}
+});
+{% endblock script %}

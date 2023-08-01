@@ -1,0 +1,3 @@
+INSERT INTO public.customers_telegramprofile (created_at,updated_at,uid,binance_api_key,binance_secret_key,ref_id,first_name,last_name,username,language_code,"language",is_allowed,is_admin) VALUES
+	 ('2023-06-04 03:08:57.114076+03','2023-06-04 03:08:57.119993+03','123123','123','123','123','123','123','123','123','english',true,false),
+	 ('2023-06-07 02:11:10.315908+03','2023-06-07 02:11:21.474165+03','1977186594',NULL,NULL,NULL,'Даниил','','daniil_dn','ru','english',true,false);

@@ -1,0 +1,544 @@
+/* Темная тема по умолчанию */
+body {
+      --main-text-color-dark: white;
+  --accent-color-dark: #0baae0;
+  --hr-color-dark: white;
+  --main-bg-color-light: #ffffff;
+  --main-text-color-light: #000000;
+  --accent-color-light: #0baae0;
+  --hr-color-light: #000000;
+  --main-text-color: var(--main-text-color-dark);
+  --accent-color: var(--accent-color-dark);
+
+  --hr-color: #7992ee;
+    --header-text-color: #0baae0;
+    --box1-background: #b5fcf8;
+    --box2-background: #262626;
+    --main-bg-color: #1c1c1c;
+    --cp-text-color: #b5fcf8;
+    --btn-main-color: #b5fcf8;
+    --btn-main-text-color: #7992ee;
+    display: inline!important;
+}
+
+/* Светлая тема */
+.light-theme {
+  --main-text-color: var(--main-text-color-light)!important;
+  --accent-color: var(--accent-color-light)!important;
+
+  --hr-color: #7992ee;
+    --header-text-color: #00aeef;
+    --box1-background: #2f2f2f;
+    --box2-background: #d6fefb;
+    background-color: #b5fcf8!important;
+    --cp-text-color: #000000;
+    --btn-main-color: #7992ee;
+    --btn-main-text-color: #b5fcf8;
+    display: inline!important;
+}
+
+/* Замените прямые ссылки на цвета на переменные */
+body {
+  color: var(--main-text-color);
+  background-color: var(--main-bg-color);
+}
+
+.header-title {
+  color: var(--header-text-color);
+}
+
+hr {
+  border-top-color: var(--hr-color);
+}
+
+* {
+    /* touch-action: none; */
+    /* overscroll-behavior-block: contain; */
+    /* touch-action: pan-y; */
+}
+
+html, body {
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+html {
+    font-size: 20px;
+}
+
+body {
+    font-family: "Akrobat", sans-serif;
+    font-weight: 700;
+}
+
+/*              */
+
+.top-row {
+    margin-top: 2rem;
+}
+
+.hot-logo {
+    width: 7.5rem;
+}
+
+.header-title {
+    font-size: 1.4rem;
+    align-self: center;
+    font-weight: bolder;
+    color: var(--accent-color-dark);
+    padding-left: 10%;
+    padding-top: 1.3rem;
+}
+
+.btn-tf {
+  color: var(--cp-text-color);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: none;
+  text-decoration-color: #b5fcf8;
+  outline: none;
+  position: relative;
+  display: inline-block; /* добавляем display: inline-block */
+    font-size: 0.8rem;
+}
+
+.btn-tf-container {
+  margin-top: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.btn-tf {
+  font-weight: 700;
+  color: var(--cp-text-color);
+  background-color: rgba(0, 0, 0, 0);
+  border-color: rgba(0, 0, 0, 0);
+  border-radius: 10px;
+  position: relative;
+}
+
+.btn-tf::before,
+.btn-tf::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  left: -5px;
+  right: -5px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  transition: border-color 0.3s ease-out;
+}
+
+.btn-tf:hover::before,
+.btn-tf:hover::after,
+.btn-tf.active::before,
+.btn-tf.active::after {
+  border-color: var(--cp-text-color);
+}
+
+.btn-tf::before {
+  z-index: -1;
+}
+
+.btn-tf::after {
+  z-index: -2;
+}
+
+.btn-tf.active::before {
+  z-index: -3;
+  background-color: rgba(39, 39, 39, 0);
+  color: #fff;
+}
+
+.btn-tf.active::after {
+  z-index: -4;
+  background-color: rgba(39, 39, 39, 0);
+  color: #fff;
+  border: 1px solid #b5fcf8;
+  border-radius: 10px;
+  padding: 4px 4px;
+}
+
+.cp-row {
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+.cp-summ {
+    text-transform: uppercase;
+font-size: 0.8em;
+}
+
+.btn-cp {
+    font-weight: 700;
+      font-size: 0.8rem;
+    color: var(--cp-text-color);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.btn-cp:hover {
+    color: #E9761B;
+}
+
+.disabled {
+    cursor: not-allowed;
+    opacity: .6;
+}
+
+.cp-row.disabled .btn-cp, .cp-row.disabled .btn-cp:hover {
+    color: var(--hr-color-dark);
+}
+
+.btn-cp.disabled .cp-delim {
+    color: var(--hr-color-dark);
+}
+
+.btn-cp.active, .btn-cp.active:hover {
+    color: #E9761B;
+}
+
+.btn-cp.active .cp-delim {
+    color: var(--hr-color-dark);
+}
+
+.cp-flag {
+    float: left;
+    margin-left: -.25rem;
+    /* width: 1.8rem; */
+    height: 1rem;
+}
+
+.cp-delim {
+    color: #E9761B;
+}
+
+.frame-title {
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    font-weight: 900;
+}
+
+.rec-arc-container {
+    position: relative;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.rec-arw {
+    position: absolute;
+    bottom: -14%;
+    transform: rotate(0deg);
+    transform-origin: 50% 85%;
+    left: 45.5%;
+    height: 85%;
+    transition: transform 1s;
+}
+
+.rec-status {
+    margin-bottom: 2rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.rec-count {
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.rec-arc-hr {
+    margin-top: -2rem;
+    margin-bottom: 2rem;
+}
+
+#frames {
+    position: relative;
+    top: 0;
+    transition: left .25s;
+    overflow-x: hidden!important;
+}
+
+.frame {
+    float: left;
+    height: 100%;
+    /* padding: 1rem; */
+    /* width is updated by javascript */
+}
+
+.frame > .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.arrow {
+    cursor: pointer;
+}
+
+.arrow img {
+    width: 150%;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.curr-cp-container {
+    width: max-content;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border: 0.3rem solid #E9761B;
+    border-radius: 50rem;
+}
+.curr-cp-container span {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.curr-cp-first, .curr-cp-last {
+    color: #E9761B;
+}
+
+.curr-cp-container .cp-flag {
+    height: 2rem;
+}
+
+.curr-cp-firstname, .curr-cp-delim, .curr-cp-lastname {
+    font-size: .7rem;
+    text-transform: uppercase;
+}
+
+/* -- Menu -- */
+#menu-frame {
+    position: relative;
+    overflow-x: hidden!important;
+}
+
+.btn-main {
+    cursor: pointer;
+    z-index: 100;
+    width: 90%;
+    margin: auto;
+    bottom: 1px;
+	position: fixed;
+    padding: 1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    border: 1px solid var(--btn-main-color);
+    border-radius: 50rem;
+    color: var(--btn-main-text-color);
+    background: var(--btn-main-color);
+}
+
+a.tf.btn.btn-tf {
+    border: none!important;
+	border-color: transparent!important;
+	color: #adf0ec;
+}
+a.tf.btn.btn-tf.active {
+    color: white!important;
+}
+a.tf.btn.btn-tf:hover {
+    border-color: white;
+    color: white;
+}
+a.tf.btn.btn-tf.active::before, a.tf.btn.btn-tf.active::after {
+    border: 2px solid black;
+}
+a.tf.btn.btn-tf.active::before, a.tf.btn.btn-tf.active::after {
+    border: 2px solid;
+    border-color: white;
+}
+a.tf.btn.btn-tf.active:hover::before, a.tf.btn.btn-tf.active:hover::after {
+    border-color: red;
+}
+.tf-rec {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    padding: 0 0.625rem;
+}
+
+.tf-col {
+    min-width: 0;
+}
+
+.faq-popup {
+    position: fixed;
+    z-index: 100;
+    top: 5rem;
+    left: 10%;
+    width: 80%;
+    /* max-width: inherit; */
+    padding: 1rem;
+    color: black;
+    background: var(--hr-color-dark);
+    border: 1px solid;
+    border-radius: 5px;
+}
+
+.idc-row {
+    margin-bottom: 1rem;
+}
+
+.idc-summ {
+    text-transform: uppercase;
+}
+
+.sell-case {
+    margin-left: 7px;
+    color: #e9761b;
+    font-weight: lighter;
+    text-decoration: none;
+    pointer-events: none;
+}
+
+.buy-case {
+    margin-left: 7px;
+    color: #1ccae8;
+    font-weight: lighter;
+    text-decoration: none;
+    pointer-events: none;
+}
+
+/*NEW*/
+.wrapper {
+  position: relative;
+    display: flex;
+  height: 180px;
+    justify-content: space-between;
+}
+
+.box1 {
+  position: absolute;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+  top: 0;
+  height: 130px;
+  width: 100%;
+  background-color: var(--box1-background);
+  border-radius: 0 0 30px 30px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.box1_img {
+    height: 9vh;
+    padding-right: 10%;
+    align-self: center;
+}
+
+.box2 {
+  position: absolute;
+  top: 0;
+  height: 180px;
+  width: 100%;
+  background-color: var(--box2-background);
+  border-radius: 0 0 30px 30px;
+  box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 0;
+}
+
+.button-container {
+  position: absolute;
+  top: 103px;
+  left: 50%;
+}
+
+.my-button {
+  position: relative; /* необходимо для позиционирования псевдоэлемента */
+  background-color: #7992ee;
+  color: #acedf7;
+  padding: 10px 40px 10px 20px; /* увеличиваем отступ для размещения стрелки */
+  border: none;
+  border-radius: 25px;
+  font-size: 19px;
+    font-weight: bold;
+  cursor: pointer;
+    text-align: right;
+    line-height: 15px;
+}
+
+.my-button::after {
+  content: ">"; /* добавляем символ стрелки */
+  position: absolute; /* абсолютное позиционирование относительно родительского элемента */
+  top: 50%; /* вертикальное выравнивание по центру кнопки */
+  right: 10px; /* отступ от правого края кнопки */
+  transform: translateY(-50%); /* корректировка позиции стрелки */
+  font-size: 25px; /* размер символа */
+}
+
+.cp-first, .cp-last {
+        /*color: var(--cp-text-color);*/
+    }
+
+    .cp-delim {
+        color: #7992ee;
+    }
+
+    .separator {
+        border-bottom: 1px solid #7992ee;
+        padding-top: 1rem;
+    }
+
+    .timeframes {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+.p-0 {
+    padding: 0 !important;
+}
+
+.m-0 {
+    margin: 0 !important;
+}
+
+.p-1 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.timeframes {
+    width: 65%;
+}
+
+.cp-list {
+    max-height: 100vh;
+    max-width: 100vw;
+    overflow-x: clip;
+    overflow-y: scroll;
+    margin-bottom: 80px!important;
+}
+
+/*NEw
+
+.light-theme a {
+  color: black !important;
+}
+.light-theme a.tf.btn.btn-tf.active (
+    color: black !important;
+}
+*/
+
+
+body.light-theme a.tf.btn.btn-tf {
+    color: #1c1c1c !important;
+}
+
+body.light-theme {
+    background-color: #b5fcf8 !important;
+}
+body.light-theme a.tf.btn.btn-tf.active::before, a.tf.btn.btn-tf.active::after {
+    border-color: #e9761b !important;
+    border: 2px solid !important;
+}

@@ -1,0 +1,26 @@
+<VirtualHost *:80>
+
+ProxyPreserveHost On
+ProxyPass / http://127.0.0.1:8000/
+ProxyPassReverse / http://127.0.0.1:8000.
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+</VirtualHost>
+
+<VirtualHost _default_:443>
+ServerName ex.com
+RewriteEngine On
+RewriteCond %{HTTP:Upgrade} =websocket [NC]
+RewriteRule ^/ws/(.*)    ws://localhost:7890/ws/$1 [P,L]
+
+    # All other requests go to http
+ProxyPass "/" "http://127.0.0.1:8000/"
+ProxyPassReverse / http://127.0.0.1:8000/
+SSLEngine On
+# etc...
+SSLCertificateFile /etc/letsencrypt/live/ex.com/fullchain.pem
+SSLCertificateKeyFile /etc/letsencrypt/live/ex.com/privkey.pem
+Include /etc/letsencrypt/options-ssl-apache.conf
+</VirtualHost>
+

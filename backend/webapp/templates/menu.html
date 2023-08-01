@@ -1,0 +1,544 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+{% include "css/reset.min.css" %}
+{% include 'css/app.css' %}
+{% include 'css/speedometr.css' %}
+{% endblock style %}
+
+{% block content %}
+
+{% if initial_cp is None or sleep_page%}
+{% include 'sleep.html' %}
+{% else %}
+
+<div class="container-center-horizontal">
+    <div class="btn-main ">Подтвердить</div>
+
+
+    <div id="menu-frame" class="container m-0 p-0"
+         style="position: absolute; background-color: var(--haiti);border: 1px none;height: 100%;width: 100%;">
+
+        <div class="header">
+            <div class="box1">
+                <div class="ak-roman-logo-top">
+                    <img class="logoimg" src="/static/images/logo.svg" alt="1">
+                    <img class="group-23-logo" src="/static/images/logo-text2.png" alt="Group 23">
+<!--                    <img class="vector-11-polosa" src="/static/images/vector-11.svg" alt="Vector 11">-->
+                </div>
+            </div>
+            <div class="button-container">
+                <button class="my-button3">
+                    <div class="btn-1-top">
+                        <div class="group-33">
+                            <div class="ellipse-29"></div>
+                            <img class="polygon-3" src="/static/images/polygon-3.svg" alt="Polygon 3">
+                        </div>
+                        <div class="fear-greed-index-text valign-text-middle golosui-regular-normal-charlotte-14-8px">
+                            Fear &amp; greed<br>index
+                        </div>
+                    </div>
+                </button>
+                <button class="my-button1">
+                    <div class="btn-2-top">
+                        <div class="top-winnerslosers-text valign-text-middle golosui-regular-normal-charlotte-14-8px">
+                            Top <br>winners/losers
+                        </div>
+                        <div class="group-33-rr group-33">
+                            <div class="ellipse-29"></div>
+                            <img class="polygon-3-rr polygon-3" src="/static/images/polygon-3-1.svg" alt="Polygon 3">
+                        </div>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <h1 class="title-title valign-text-middle golosui-bold-rose-pearl-30-9px">Coin selection</h1>
+
+        <div class="cp-list">
+
+            <div class="row row-cols-1 p-1">
+                {% for cp in available_luquidity %}
+                <div class="col separator">
+
+
+                    {% include "frames/elements/menu-cp-row-lqvd.html" with cp=cp %}
+
+
+                </div>
+                {% endfor %}
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <script>
+    // Функция для обновления значений
+    function updateCurrencyValues() {
+        // Получить все элементы <a> с классом "btn-cp"
+        var currencyElements = $('.btn-cp');
+
+
+
+        // Получить данные с сервера
+        $.getJSON('https://bef9-185-135-150-187.ngrok-free.app/api/funding_data/')
+            .done(function(data) {
+                // Пройтись по каждому элементу и обновить значение <span class="cp-x00000">
+                currencyElements.each(function() {
+                    var currencyElement = $(this);
+
+                    // Получить первое название (например, BTC) из атрибута "data-first"
+                    var firstCurrency = currencyElement.data('first');
+
+                    // Получить значение, соответствующее первому названию
+                    var value = data[firstCurrency];
+                    if(value === undefined){value=0}
+
+                    // Найти <span class="cp-x00000"> внутри текущего элемента
+                    var x00000Element = currencyElement.find('.cp-x00000');
+
+                    // Обновить текст внутри <span class="cp-x00000"> с новым значением
+                    if (x00000Element.length > 0) {
+                        x00000Element.text(value + '%');
+
+                        // Проверить, содержит ли значение знак минус
+                        if (value < 0) {
+                            // Найти изображение с классом "polygon-5"
+                            var imageElement = currencyElement.find('.polygon-5');
+
+                            // Перевернуть изображение на 180 градусов
+                            if (imageElement.length > 0) {
+                                imageElement.css('transform', 'rotate(180deg)');
+                            }
+                        }
+                    }
+                });
+            })
+            .fail(function(jqXHR, textStatus, error) {
+                console.error('Ошибка при получении данных с сервера:', error);
+            });
+    }
+
+    $(document).ready(function() {
+        updateCurrencyValues();
+
+        // Обновлять значения каждые 5 секунд
+        setInterval(updateCurrencyValues, 5000);
+    });
+
+
+                </script>
+
+
+
+
+                {% for cp in currency_pairs %}
+                <div class="col separator">
+                    {% include "frames/elements/menu-cp-row.html" with cp=cp %}
+                </div>
+
+                {% endfor %}
+                <div style="padding:25px 0 15px 0">
+                    </div>
+                {% for cp in not_avalable_currencies %}
+                <div class="col separator">
+                    {% include "frames/elements/menu-cp-row.html" with cp=cp %}
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+        <script>
+            $(document).ready(function() {
+              var btnMain = $('.btn-main');
+          
+              function checkActiveElements() {
+                var activeElements = $('a.tf.btn.btn-tf.active');
+                if (activeElements.length === 0) {
+                  btnMain.css('display', 'none'); // Скрываем кнопку, если нет активных элементов
+                } else {
+                  btnMain.css('display', 'block'); // Отображаем кнопку, если есть активные элементы
+                }
+              }
+          
+              checkActiveElements();
+          
+              $(document).on('click', 'a.tf.btn.btn-tf', function() {
+                setTimeout(function() {
+                  checkActiveElements();
+                }, 0);
+              });
+            });
+          </script>
+    </div>
+
+
+    <div id="top-winnerslosers" class="container m-0 p-0"
+         style="display: none; background-color: var(--haiti);border: 1px none; height: 600px; position: absolut; width: 100%;">
+        <div class="header">
+            <div class="box1">
+                <div class="ak-roman-logo-top">
+                    <img class="logoimg" src="/static/images/logo.svg" alt="1">
+                    <img class="group-23-logo" src="/static/images/logo-text2.png" alt="Group 23">
+<!--                    <img class="vector-11-polosa" src="/static/images/vector-11.svg" alt="Vector 11">-->
+                </div>
+            </div>
+            <div class="button-container">
+                <button class="back-to-menu2">
+                    <div class="btn-1-top">
+                        <div class="group-33">
+                            <div class="ellipse-29"></div>
+                            <img class="polygon-3" src="/static/images/polygon-3.svg" alt="Polygon 3">
+                        </div>
+                        <div class="fear-greed-index-text valign-text-middle golosui-regular-normal-charlotte-14-8px">
+                            Coin<br>selection
+                        </div>
+                    </div>
+                </button>
+                <button class="my-button4">
+                    <div class="btn-2-top">
+                        <div class="top-winnerslosers-text valign-text-middle golosui-regular-normal-charlotte-14-8px">
+                            Fear &amp; greed<br>index
+                        </div>
+                        <div class="group-33-rr group-33">
+                            <div class="ellipse-29"></div>
+                            <img class="polygon-3-rr polygon-3" src="/static/images/polygon-3-1.svg" alt="Polygon 3">
+                        </div>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+
+        <h1 class="title-title valign-text-middle golosui-bold-rose-pearl-30-9px">Top Winners/Losers</h1>
+
+        <div class="cp-list">
+
+            <div class="row row-cols-1 p-1">
+                <div class="col separatorhead">
+                    <div class="greed-MqrxfF greed" data-id="644:2339">
+                        <span class="coolvetica-regular-normal-white-22px">Name</span>
+                        <span class="coolvetica-regular-normal-white-22px">Price</span>
+                        <span class="coolvetica-regular-normal-white-22px">24h</span>
+                        <span class="coolvetica-regular-normal-white-22px">Volume (24h)</span>
+                    </div>
+                </div>
+                <div id="TWL">
+
+                    <script>
+            $(document).ready(function() {
+    // Функция для обновления данных
+    function updateData() {
+        // Получить контейнер
+        var container = $('#TWL');
+
+        // Анимация при удалении предыдущих строк
+        container.fadeOut(500, function() {
+            // Очистить контейнер после анимации
+            container.empty();
+
+            // Получить данные с сервера
+            $.getJSON('https://bef9-185-135-150-187.ngrok-free.app/api/volume_data/', function(data) {
+                // Пройти по каждому элементу данных
+                $.each(data, function(index, item) {
+                    // Получить значения из текущего элемента данных
+                    var pepe = item[0];
+                    var price = item[1];
+                    var img_data_id1 = item[2];
+                    var vol = item[3];
+
+                    // Создать новую строку с разметкой
+                    var newRow = $('<div class="col separatorPepe">' +
+                        '<div class="greed-MqrxfF greed" data-id="644:' + index + '">' +
+                        '<div class="pepe valign-text-middle coolvetica-compressedregular-normal-downy-20px column" data-id="pepe' + index + '">' + pepe + '</div>' +
+                        '<div class="x0000000000 valign-text-middle coolvetica-regular-normal-white-20px column" data-id="divspanprice' + index + '">' +
+                        '<span>' +
+                        '<span class="span0-xjeWRR coolvetica-regular-normal-white-20px">$</span>' +
+                        '<span class="span1-xjeWRR coolvetica-regular-normal-white-20px">' + price.toFixed(0) + '</span>' +
+                        '</span>' +
+                        '</div>' +
+                        '<div class="24h column">' +
+                        '<div class="strelochki">' +
+                        '<img data-id="I644:' + index + ';644:' + img_data_id1 + '" src="../static/images/polygon-4.svg" alt="Polygon 4">' +
+                        '<img class="polygon-3-reO9cd polygon-3" data-id="I644:' + index + ';644:' + img_data_id1 + '" src="../static/images/polygon-3-6.svg" alt="Polygon 3">' +
+                        '</div>' +
+                        '<div class="x100 valign-text-middle coolvetica-condensedregular-normal-rose-pearl-20px" data-id="divspan24h' + index + '">100%</div>' +
+                        '</div>' +
+                        '<div class="x000000000000 valign-text-middle coolvetica-regular-normal-white-20px column" data-id="divspanVol' + index + '">' +
+                        '<span>' +
+                        '<span class="span0-riowiU coolvetica-regular-normal-white-20px">$</span>' +
+                        '<span class="span1-riowiU coolvetica-regular-normal-white-20px">' + vol + '</span>' +
+                        '</span>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>');
+
+                    // Вставить новую строку в контейнер
+                    container.append(newRow);
+                });
+
+                // Анимация после добавления новых строк
+                container.fadeIn(500);
+            });
+        });
+    }
+
+    // Обновление данных каждые 5 секунд
+    setInterval(updateData, 5000);
+
+    // Инициализация данных при загрузке страницы
+    updateData();
+});
+
+
+
+                    </script>
+                    
+                </div>
+            </div>
+            <!--<div class="btn-main d-none">Подтвердить</div> -->
+        </div>
+
+
+    </div>
+
+
+    <div id="fear-greed-frame" class="container m-0 p-0"
+         style="display: none ;background-color: var(--haiti);border: 1px none;height: 600px;position: absolute;">
+        <div class="header">
+            <div class="box1">
+                <div class="ak-roman-logo-top">
+                    <img class="logoimg" src="/static/images/logo.svg" alt="1">
+                    <img class="group-23-logo" src="/static/images/logo-text2.png" alt="Group 23">
+<!--                    <img class="vector-11-polosa" src="/static/images/vector-11.svg" alt="Vector 11">-->
+                </div>
+            </div>
+            <div class="button-container">
+                <button class="back-to-menu3">
+                    <div class="btn-1-top">
+                        <div class="group-33">
+                            <div class="ellipse-29"></div>
+                            <img class="polygon-3" src="/static/images/polygon-3.svg" alt="Polygon 3">
+                        </div>
+                        <div class="fear-greed-index-text valign-text-middle golosui-regular-normal-charlotte-14-8px">
+                            Coin<br>selection
+                        </div>
+                    </div>
+                </button>
+                <button class="my-button2">
+                    <div class="btn-2-top">
+                        <div class="top-winnerslosers-text valign-text-middle golosui-regular-normal-charlotte-14-8px">
+                            Top <br>winners/losers
+                        </div>
+                        <div class="group-33-rr group-33">
+                            <div class="ellipse-29"></div>
+                            <img class="polygon-3-rr polygon-3" src="/static/images/polygon-3-1.svg" alt="Polygon 3">
+                        </div>
+                    </div>
+                </button>
+            </div>
+        
+
+            <h1 class="title-title valign-text-middle golosui-bold-rose-pearl-30-9px">Fear &amp; Greed Index</h1>
+<style>
+    .fear-index.screen {
+    height: 100vh;
+}
+</style>
+            <!-- JavaScript-код для выполнения GET-запроса и обновления спидометра -->
+            <script>
+ // Функция для выполнения GET-запроса
+function makeGETRequest(url, callback) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', url, true);
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      var response = JSON.parse(xhr.responseText);
+      callback(response);
+    }
+  };
+  xhr.send();
+}
+
+// Обновление значения спидометра и поворот группы
+function updateSpeedometerValue(value) {
+  const speedometerValueElement = document.getElementById('speedometerValueElement');
+  const groupElement = document.querySelector('.fear-index .group-12-c2uujl');
+  
+  speedometerValueElement.textContent = value;
+  groupElement.style.transform = `rotate(${(value / 100) * 180}deg)`; // Вычисляем угол поворота
+  
+}
+
+// URL для выполнения GET-запроса
+const url = 'https://bef9-185-135-150-187.ngrok-free.app/api/timeframe_data/';
+
+// Выполнение GET-запроса и обновление спидометра
+makeGETRequest(url, function (response) {
+  const speedometerValue = response[0];
+  updateSpeedometerValue(speedometerValue);
+});
+
+
+            </script>
+</div>
+
+                <div class="fear-index screen" data-id="624:1218">
+                    <div class="view-FAgnjn view" data-id="644:1099">
+                        <div class="ellipse-28-sxCrbX" data-id="629:887"></div>
+                        <img class="ellipse-8-sxCrbX" data-id="629:857" src="../static/images/ellipse-8.png"
+                             alt="Ellipse 8">
+                        <div class="x0-sxCrbX valign-text-middle coolvetica-condensedregular-normal-charlotte-30px"
+                             data-id="629:858">0
+                        </div>
+                        <div class="x20-sxCrbX valign-text-middle x20 coolvetica-condensedregular-normal-charlotte-30px"
+                             data-id="629:859">20
+                        </div>
+                        <div class="x40-sxCrbX valign-text-middle coolvetica-condensedregular-normal-charlotte-30px"
+                             data-id="629:860">
+                            40
+                        </div>
+                        <div class="x100-sxCrbX valign-text-middle coolvetica-condensedregular-normal-charlotte-30px"
+                             data-id="629:861">
+                            100
+                        </div>
+                        <div class="x80-sxCrbX valign-text-middle coolvetica-condensedregular-normal-charlotte-30px"
+                             data-id="629:862">
+                            80
+                        </div>
+                        <div class="x60-sxCrbX valign-text-middle coolvetica-condensedregular-normal-charlotte-30px"
+                             data-id="629:863">
+                            60
+                        </div>
+                        <div class="view-sxCrbX view" data-id="629:864"><img class="icon-signal-NtV1vK"
+                                                                             data-id="629:865"
+                                                                             src="../static/images/ellipse-16.svg"
+                                                                             alt="icon-signal"><img
+                                class="ellipse-18-NtV1vK" data-id="629:866" src="../static/images/ellipse-18.svg"
+                                alt="Ellipse 18"><img class="ellipse-20-NtV1vK" data-id="640:961"
+                                                      src="../static/images/ellipse-20.svg" alt="Ellipse 20"><img
+                                class="ellipse-17-NtV1vK" data-id="629:867" src="../static/images/ellipse-17.svg"
+                                alt="Ellipse 17"><img class="icon-call-NtV1vK" data-id="629:868"
+                                                      src="../static/images/ellipse-19.svg" alt="icon-call"></div>
+                        <div class="view-J5opDo view" data-id="629:878">
+                            <div class="group-12-c2uujl" data-id="I629:878;104:208"><img class="union-HkVAyJ"
+                                                                                         data-id="I629:878;104:154"
+                                                                                         src="../static/images/union.svg"
+                                                                                         alt="Union">
+                                <div class="ellipse-20-HkVAyJ" data-id="I629:878;104:157"></div>
+                                <img class="ellipse-21-HkVAyJ" data-id="I629:878;104:158"
+                                     src="../static/images/ellipse-21.svg" alt="Ellipse 21">
+                            </div>
+                            <div id="speedometerValueElement" class="x20-c2uujl valign-text-middle x20"
+                                 data-id="I629:878;104:235">20
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            
+
+
+        
+
+    </div>
+</div>
+{% endif %}
+
+{% endblock content %}
+
+{% block script %}
+window.addEventListener("load", function(event) {
+{% if initial_cp is None %}
+{% include 'js/default-telegram.js' %}
+{% else %}
+const hello = new URLSearchParams(window.location.search).get("hello");
+const state = {};
+{% include "js/menu-signals.js" %}
+{% include "js/default-telegram.js" %}
+
+
+function switchFrames2(hideFrame2, showFrame2) {
+const transitionDuration = 500;
+
+hideFrame2.style.display = 'none';
+hideFrame2.style.transition = 'transform ${transitionDuration}ms ease-in-out';
+hideFrame2.style.transform = 'translateX(100%)';
+
+showFrame2.style.display = 'block';
+showFrame2.style.transition = 'transform ${transitionDuration}ms ease-in-out';
+showFrame2.style.transform = 'translateX(-100%)';
+
+setTimeout(() => {
+showFrame2.style.transform = 'translateX(0)';
+}, 10);
+
+setTimeout(() => {
+hideFrame2.style.display = 'none';
+hideFrame2.style.transform = 'translateX(-100%)';
+}, transitionDuration);
+}
+
+
+function switchFrames(hideFrame, showFrame) {
+const transitionDuration = 500;
+
+hideFrame.style.display = 'none';
+hideFrame.style.transition = `transform ${transitionDuration}ms ease-in-out`;
+hideFrame.style.transform = 'translateX(-100%)';
+hideFrame.style.zIndex = "-1";
+
+showFrame.style.display = 'block';
+showFrame.style.transition = `transform ${transitionDuration}ms ease-in-out`;
+showFrame.style.transform = 'translateX(100%)';
+showFrame.style.zIndex = "50";
+
+setTimeout(() => {
+showFrame.style.transform = 'translateX(0)';
+showFrame.style.zIndex = '50';
+}, 10);
+
+setTimeout(() => {
+hideFrame.style.display = 'none';
+hideFrame.style.zIndex = '-1';
+hideFrame.style.transform = 'translateX(0)';
+}, transitionDuration);
+}
+
+
+backButton2.addEventListener("click", function(event) {
+switchFrames2(topWinnersLosersFrame, menuFrame);
+var btnMain = $('.btn-main');
+btnMain.css('display', 'Block');
+});
+
+backButton3.addEventListener("click", function(event) {
+switchFrames2(fearAndGreedFrame, menuFrame);
+var btnMain = $('.btn-main');
+btnMain.css('display', 'Block');
+});
+
+button1.addEventListener("click", function(event) {
+switchFrames(menuFrame, topWinnersLosersFrame);
+var btnMain = $('.btn-main');
+btnMain.css('display', 'None');
+});
+
+button2.addEventListener("click", function(event) {
+switchFrames(fearAndGreedFrame, topWinnersLosersFrame);
+});
+
+button3.addEventListener("click", function(event) {
+switchFrames2(menuFrame, fearAndGreedFrame);
+var btnMain = $('.btn-main');
+btnMain.css('display', 'None');
+});
+
+button4.addEventListener("click", function(event) {
+switchFrames(topWinnersLosersFrame, fearAndGreedFrame);
+});
+
+
+{% endif %}
+});
+{% endblock script %}
+ease-in-out

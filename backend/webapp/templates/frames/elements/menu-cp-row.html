@@ -1,0 +1,61 @@
+{% load static %}
+
+{% if cp.is_available == False %}
+<div class="row cp-row align-items-center disabled" data-abbr="{{ cp }}" style="flex-wrap: nowrap">
+    {% else %}
+    <div class="row cp-row align-items-center" data-abbr="{{ cp }}" style="flex-wrap: nowrap">
+        {% endif %}
+        <div class="col" style="padding-right: 0;">
+            <div class="cp-row-item align-items-center d-flex">
+                <div class="col" style="margin-left: 7px">
+                  <a href="javascript:void(0)"
+                     data-abbr="{{ cp }}"
+                     data-first="{{cp.first}}"
+                     data-last="{{cp.last}}"
+                     data-firstname="{{cp.first.name}}"
+                     data-lastname="{{cp.last.name}}"
+                     data-active="0"
+                     class="btn-cp"
+                  >
+                    <span class="cp-first">{{ cp.first }}</span>
+                    <span class="cp-delim">/</span>
+                    <span class="cp-last">{{ cp.last }}</span>
+                    <div class="colper" style="margin-left: 7px;margin-top: 5px!important;">
+                        <img class="polygon-5" data-id="I644:1292;644:1082" src="../static/images/polygon-5.svg" alt="Polygon 5">
+                        <div class="cp-x00000" data-id="btc-value">0.0000%</div>
+                      </div>
+                  </a>
+                  
+                </div>
+                
+              
+              </div>
+        </div>
+        <div class="d-flex space-between timeframes"
+             {% comment %} style="overflow-x: scroll; overflow-y:hidden; position:relative; height: 3rem;" {% endcomment
+             %}
+        >
+            <div class="row"
+                 {% comment %} style="position: absolute; width: max-content;" {% endcomment %}
+            >
+                {% for tf in timeframes %}
+                {% if tf.abbr in cp.tf_selecter %}
+                <div class="col-auto tf-col"
+                     style="font-weight: lighter;">
+                    <a href="javascript:void(0)" data-abbr="{{ tf.abbr }}" data-active="1" class="tf btn btn-tf active">
+                        {{tf.name}}</a>
+                    <br/>
+                    {% else %}
+                    <div class="col-auto tf-col"
+                     style="font-weight: lighter;">
+                    <a href="javascript:void(0)" data-abbr="{{ tf.abbr }}" data-active="0" class="tf btn btn-tf">
+                        {{tf.name}}</a>
+                    <br/>
+                     {% endif %}
+
+                </div>
+                
+                {% endfor %}
+            </div>
+        </div>
+
